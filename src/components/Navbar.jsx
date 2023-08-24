@@ -57,8 +57,8 @@ const Navbar = (props) => {
 						onClick={openNav}
 						className="font-medium text-lg  hover:text-blue cursor-pointer ease-in-out duration-300 "
 					>
-						<HashLink smooth to="/#otherPage">
-							otherPage
+						<HashLink smooth to="/PostOffer">
+							PostOffer
 						</HashLink>
 					</li>
 					{userData.user.isAdmin ? (

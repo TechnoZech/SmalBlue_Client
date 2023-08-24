@@ -17,12 +17,14 @@ const SignUp = () => {
         setUserData({...userData, [e.target.name] : e.target.value})
     }
 
+	//! Signup function 
     const handleSignUp = async () => {
+		console.log('signp')
         const response = await axios.post("http://localhost:8080/signup", {
             userData,
 		})
 		console.log(response);
-        navigate('/'); 
+        navigate('/login'); 
 
 		return response;
     }

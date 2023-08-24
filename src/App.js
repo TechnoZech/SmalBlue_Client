@@ -10,6 +10,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/LoginSignUp/Login";
 import SignUp from "./pages/LoginSignUp/SignUp";
 import Profile from "./pages/Profile/Profile";
+import PostOffer from "./pages/User/PostOffer";
 
 function App() {
 	//DarkMode
@@ -29,8 +30,6 @@ function App() {
 	//Fetching current user from server
 	const dispatch = useDispatch();
 	const token = window.localStorage.getItem('token');
-	
-	
 	useEffect(() => {
 		if(token){
 			axios.post('http://localhost:8080/getuser', {token})
@@ -41,7 +40,6 @@ function App() {
 					window.location.href = "/login";
 					return;
 				}else if(res.data.status === 'ok'){
-					console.log(res.data.data)
 					dispatch(getUserData(res.data.data));
 				}else{
 					console.log('what?');
@@ -63,6 +61,7 @@ function App() {
 				<Route path="/Profile" element={<Profile theme={theme} />} />
 				<Route path="/SignUp" element={<SignUp theme={theme} />} />
 				<Route path="/Login" element={<Login theme={theme} />} />
+				<Route path="/PostOffer" element={<PostOffer theme={theme} />} />
 			</Routes>
 		</Router>
 	);
