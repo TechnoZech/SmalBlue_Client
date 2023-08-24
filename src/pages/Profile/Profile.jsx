@@ -1,12 +1,11 @@
 import React from "react";
 import NoUser from "../../components/NoUser";
 import { useSelector } from "react-redux";
-
+import { NavLink } from "react-router-dom";
 const Profile = (props) => {
 
 	const isLoggedIn = window.localStorage.getItem('loggedIn');
 	// <----------------- Logout -------------------->
-
 	const logout = () => {
 		window.localStorage.clear();
 		window.location.href = "/login";
@@ -25,14 +24,27 @@ const Profile = (props) => {
 					</span>{" "}
 					How are you doing?
 				</h1>
-				<div className="flex flex-col items-center justify-center bg-blue dark:bg-darkBlue py-16 px-8 rounded-2xl ">
+				<div className="flex flex-col items-center justify-center bg-blue dark:bg-darkBlue py-10 px-[100px] rounded-2xl ">
 					<i className="text-white text-4xl fa-regular fa-user"></i>
 					<p className="text-white mt-5 font-semibold text-xl ">
-						{userData.user.user.name}
+						{userData.user.username}
 					</p>
 					<p className="text-white font-medium mt-2">
 						{userData.user.user.email}
 					</p>
+					<p className="text-white mt-5 font-semibold text-xl ">
+						INR Balance : {userData.user.user.balance.INR}
+					</p>
+					<p className="text-white mt-5 font-semibold text-xl ">
+						USD Balance : {userData.user.user.balance.USD}
+					</p>
+					<p className="text-white mt-5 font-semibold text-xl ">
+						EUR Balance : {userData.user.user.balance.EUR}
+					</p>
+					<NavLink to='/editprofile' className="flex items-center justify-center mt-7 gap-3 cursor-pointer">
+						<p className="text-white text-lg font-medium">Edit</p>
+						<i className="text-white text-xl font-medium  fa-regular fa-pen-to-square"></i>
+					</NavLink>
 				</div>
 				<button
 					className=" py-2 px-7 text-md text-blue bg-blue2 border-blue border-2  hover:bg-blue hover:text-white dark:bg-dark dark:text-white dark:hover:bg-darkBlue dark:border-darkBlue ease-in-out duration-100 font-semibold rounded mt-5"

@@ -10,6 +10,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/LoginSignUp/Login";
 import SignUp from "./pages/LoginSignUp/SignUp";
 import Profile from "./pages/Profile/Profile";
+import EditProfile from "./pages/Profile/EditProfile";
 import PostOffer from "./pages/User/PostOffer";
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
 				<Route path="*" element={<Home theme={theme} />} theme={theme} />
 				<Route path="/" element={<Home theme={theme} />} />
 				<Route path="/Profile" element={<Profile theme={theme} />} />
+				<Route path="/EditProfile" element={<EditProfile theme={theme} />} />
 				<Route path="/SignUp" element={<SignUp theme={theme} />} />
 				<Route path="/Login" element={<Login theme={theme} />} />
 				<Route path="/PostOffer" element={<PostOffer theme={theme} />} />

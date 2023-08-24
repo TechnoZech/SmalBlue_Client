@@ -22,8 +22,8 @@ const PostOffer = () => {
         setTotalTranValue(total);
     },[newOfferData])
 
+    // set offer data
     let setInputData = (e) => {
-		// set Questions data
 		setNewOfferData({
 			...newOfferData,
 			[e.target.name]: e.target.value,
