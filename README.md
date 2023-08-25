@@ -4,7 +4,7 @@
 
 It's a Mini P2P Forex Exchange platform using the MERN stack where users can register, log in, offer a currency for exchange, and accept offers from other users.
 
-
+#### Live: https://smalblu.onrender.com/
 
 ## Project Screen Shot(s)
 
