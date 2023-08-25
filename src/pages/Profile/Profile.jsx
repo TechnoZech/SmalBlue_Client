@@ -2,13 +2,16 @@ import React from "react";
 import NoUser from "../../components/NoUser";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-const Profile = (props) => {
+import { useNavigate } from "react-router-dom";
 
+const Profile = (props) => {
+	const navigate = useNavigate();
 	const isLoggedIn = window.localStorage.getItem('loggedIn');
 	// <----------------- Logout -------------------->
 	const logout = () => {
 		window.localStorage.clear();
-		window.location.href = "/login";
+		// window.location.href = "/login";
+		navigate("/login");
 	};
 	const userData = useSelector((state) => state); //Fetching userData
 	return (

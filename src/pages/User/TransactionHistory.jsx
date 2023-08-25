@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const TransactionHistory = () => {
 	const userTransactions = useSelector((state) => state.user.user.transactions); //Fetching Transactions
 	return (
-		<section className="bg-blue2 dark:bg-dark px-[5%] h-screen">
+		<section className="bg-blue2 dark:bg-dark px-[5%]">
 			<div className="flex flex-col h-screen items-center justify-center text-center">
 				<h1 className="text-dark dark:text-white font-bold text-xl lg:text-4xl mb-11 ">
 					Transactions
