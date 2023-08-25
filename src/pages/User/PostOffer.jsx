@@ -36,7 +36,7 @@ const PostOffer = () => {
     const handleOfferData = async() => { // On Submit
         try {
             
-            const res = await axios.post('http://localhost:8080/offer', {newOfferData});
+            const res = await axios.post('/offer', {newOfferData});
             navigate("/");
             console.log(res);
         } catch (error) {

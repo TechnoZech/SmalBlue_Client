@@ -12,6 +12,7 @@ import SignUp from "./pages/LoginSignUp/SignUp";
 import Profile from "./pages/Profile/Profile";
 import EditProfile from "./pages/Profile/EditProfile";
 import PostOffer from "./pages/User/PostOffer";
+import TransactionHistory from "./pages/User/TransactionHistory";
 
 function App() {
 	//DarkMode
@@ -33,7 +34,7 @@ function App() {
 	const token = window.localStorage.getItem('token');
 	useEffect(() => {
 		if(token){
-			axios.post('http://localhost:8080/getuser', {token})
+			axios.post('/getuser', {token})
 			.then((res) => {
 				if (res.data.data === 'token expired') {
 					console.log('token expired');
@@ -64,6 +65,7 @@ function App() {
 				<Route path="/SignUp" element={<SignUp theme={theme} />} />
 				<Route path="/Login" element={<Login theme={theme} />} />
 				<Route path="/PostOffer" element={<PostOffer theme={theme} />} />
+				<Route path="/TransactionHistory" element={<TransactionHistory theme={theme} />} />
 			</Routes>
 		</Router>
 	);

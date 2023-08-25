@@ -23,7 +23,7 @@ const Hero = (props) => {
 
 			//Fetching current user from server with updated balance
 			if (token) {
-				axios.post("http://localhost:8080/getuser", { token }).then((res) => {
+				axios.post("/getuser", { token }).then((res) => {
 					if (res.data.data === "token expired") {
 						console.log("token expired");
 						window.localStorage.clear();

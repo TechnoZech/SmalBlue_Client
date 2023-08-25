@@ -29,7 +29,7 @@ const EditProfile = () => {
     const handleProfileUpdate = async() => { // On Submit
         try {
             
-            const res = await axios.post('http://localhost:8080/profile', {newProfileData});
+            const res = await axios.post('/profile', {newProfileData});
             window.localStorage.clear();
             navigate("/login");
             console.log(res);

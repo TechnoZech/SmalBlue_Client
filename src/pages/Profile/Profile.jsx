@@ -11,7 +11,6 @@ const Profile = (props) => {
 		window.location.href = "/login";
 	};
 	const userData = useSelector((state) => state); //Fetching userData
-
 	return (
 		<>
 			{isLoggedIn ? <section className="bg-blue2 dark:bg-dark px-[5%] h-screen">
@@ -44,6 +43,12 @@ const Profile = (props) => {
 					<NavLink to='/editprofile' className="flex items-center justify-center mt-7 gap-3 cursor-pointer">
 						<p className="text-white text-lg font-medium">Edit</p>
 						<i className="text-white text-xl font-medium  fa-regular fa-pen-to-square"></i>
+					</NavLink>
+					<NavLink
+							className="mt-5 py-1.5 px-7 login-button text-blue dark:text-white bg-blue4 dark:bg-blue hover:scale-105 ease-in-out duration-300 font-medium rounded"
+							to="/TransactionHistory"
+						>
+							View Transactions
 					</NavLink>
 				</div>
 				<button

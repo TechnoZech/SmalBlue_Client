@@ -19,7 +19,7 @@ const Login = () => {
 
 	//! Login function 
 	const handleLogin = async () => {
-		const response = await axios.post("http://localhost:8080/login", {
+		const response = await axios.post("/login", {
 			userData,
 		});
 
@@ -29,7 +29,7 @@ const Login = () => {
 			window.localStorage.setItem("loggedIn", true);
 
 			await axios
-				.post("http://localhost:8080/getuser", { token: response.data.data })
+				.post("/getuser", { token: response.data.data })
 				.then((res) => {
 					if (res.data.data === "token expired") {
 						console.log("token expired");
@@ -57,7 +57,7 @@ const Login = () => {
 							src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
 							alt="logo"
 						></img>
-						WebSite Name
+						SmalBlu
 					</NavLink>
 					<div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
 						<div className="p-6 space-y-4 md:space-y-6 sm:p-8">
