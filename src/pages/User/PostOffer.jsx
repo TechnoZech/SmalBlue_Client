@@ -11,8 +11,8 @@ const PostOffer = () => {
 		buyCurrency: "INR",
 		sellRate: "",
         sellAmount: "",
-        userID: user._id,
-        userName: user.name,
+        sellerID: user._id,
+        sellerName: user.name,
 	});
 
     const [totalTranValue, setTotalTranValue] = useState();
@@ -48,14 +48,14 @@ const PostOffer = () => {
 			return (
 			<>
 				<div className="py-[5%] h-screen px-[5%] bg-blue2 dark:bg-dark">
-					<h1 className="text-blue dark:bg-dark  bg-blue2 text-center font-bold text-4xl pt-[30px] md:text-4xl dark:text-white ">
+					<h1 className="text-blue dark:bg-dark  bg-blue2 text-center font-bold text-4xl md:text-4xl dark:text-white ">
 						Post new offer
 					</h1>
-					<h1 className="text-dark dark:bg-dark  bg-blue2 text-center font-bold text-2xl pt-[30px] md:text-2xl dark:text-white ">
-						Current Balance : 230$ , 12000INR
+					<h1 className="text-dark dark:bg-dark  bg-blue2 text-center font-medium	 text-md pt-[30px] md:text-xl dark:text-white text-decoration-line: underline">
+						Current Balance : INR: {user.balance.INR} , USD: {user.balance.USD}, EUR: {user.balance.EUR}
 					</h1>
 
-					<div className="mx-[10%] mt-[50px] flex flex-col items-center gap-5 justify-center">
+					<div className="mx-[10%] mt-[20px] flex flex-col items-center gap-5 justify-center">
 						<div className="mt-5 flex gap-5 items-center justify-center">
 							<label
 								className="font-medium text-darkBlue text-xl  dark:text-white mr-2 "
@@ -72,7 +72,6 @@ const PostOffer = () => {
 								<option value="INR">INR</option>
 								<option value="EUR">EUR</option>
 								<option value="USD">USD</option>
-								<option value="POD">POD</option>
 							</select>
 						</div>
 						<div className="mt-5 flex gap-5 items-center justify-center">
@@ -91,13 +90,12 @@ const PostOffer = () => {
 								<option value="INR">INR</option>
 								<option value="EUR">EUR</option>
 								<option value="USD">USD</option>
-								<option value="POD">POD</option>
 							</select>
 						</div>
 
 						<div className="flex  justify-left items-center gap-5 ">
 							<p className="text-darkBlue dark:bg-dark  bg-blue2 text-center font-medium text-md md:text-xl dark:text-white">
-								Enter your sell rate for 1USD =
+								Enter your sell rate for 1{newOfferData.sellCurrency} =
 							</p>
 							<input
 								name="sellRate"
@@ -106,7 +104,7 @@ const PostOffer = () => {
 								className=" w-[100px] text-md font-medium p-3 rounded-md"
 							></input>
                             <p className="text-darkBlue dark:bg-dark  bg-blue2 text-center font-medium text-md md:text-xl dark:text-white">
-								INR
+							{newOfferData.buyCurrency}
 							</p>
 						</div>
 						<div className="flex  justify-left items-center gap-5 ">
@@ -120,15 +118,15 @@ const PostOffer = () => {
 								className=" w-[100px] text-md font-medium p-3 rounded-md"
 							></input>
                             <p className="text-darkBlue dark:bg-dark  bg-blue2 text-center font-medium text-md md:text-xl dark:text-white">
-								USD
+								{newOfferData.sellCurrency}
 							</p>
 						</div>
 						<div className="flex mt-5  justify-left items-center gap-5 ">
 							<p className="text-darkBlue dark:bg-dark  bg-blue2 text-center font-bold text-md md:text-3xl dark:text-white">
-								Total {newOfferData.amount}USD =  
+								Do you want to sell {newOfferData.sellAmount}{newOfferData.sellCurrency}  for
 							</p>
                             <p className="text-darkBlue dark:bg-dark  bg-blue2 text-center font-bold text-md md:text-3xl dark:text-white">
-								{totalTranValue}INR
+								{totalTranValue}{newOfferData.buyCurrency}?
 							</p>
 						</div>
 

@@ -41,7 +41,7 @@ function App() {
 					window.location.href = "/login";
 					return;
 				}else if(res.data.status === 'ok'){
-					dispatch(getUserData(res.data.data));
+					return dispatch(getUserData(res.data.data));
 				}else{
 					console.log('what?');
 				}
