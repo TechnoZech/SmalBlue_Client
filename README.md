@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+## SmalBlu
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+It's a Mini P2P Forex Exchange platform using the MERN stack where users can register, log in, offer a currency for exchange, and accept offers from other users.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Project Screen Shot(s)
 
-### `npm test`
+![screencapture-smalblu-onrender-2023-08-26-00_01_26](https://github.com/TechnoZech/SmalBlue_Client/assets/49605916/401eb291-b8ee-4331-b504-4d3d1d55575f)
+![screencapture-smalblu-onrender-profile-2023-08-26-00_01_56](https://github.com/TechnoZech/SmalBlue_Client/assets/49605916/cf3226e0-0d71-480a-a421-d5273c94aa11)
+![screencapture-smalblu-onrender-editprofile-2023-08-26-00_02_08](https://github.com/TechnoZech/SmalBlue_Client/assets/49605916/f19a8afd-31a6-4f5b-ab65-44eff56e8e86)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Installation and Setup Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Example:  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Installation:
 
-### `npm run eject`
+`npm install`  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To Run Test Suite:  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm test`  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To Start Server:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`npm start`  
 
-## Learn More
+To Visit App:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`localhost:3000/`  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Features
 
-### Code Splitting
+  1.User Authentication:
+  - Registration: Users can sign up with their email and password.
+  - Login/Logout: Registered users can log in and log out.
+  - Profile: Users can view and edit their profile, including their current balance in different currencies.
+    
+  2.Currency Exchange Offer:
+  - Post Offer: Users can post an offer specifying the currency they have, the currency they want, and the rate at which they're willing to exchange.
+  - View Offers: Users can view all active offers.
+  - Accept Offer: Users can accept an offer. Upon acceptance, the balance of the two users should be updated accordingly.
+    
+  3.Transaction History: Users can view a history of all their transactions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Technologies:  
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- HTML/CSS
+- JavaScript
+- ReactJS
+- Tailwind
+- NodeJS
+- express
+- MongoDb
