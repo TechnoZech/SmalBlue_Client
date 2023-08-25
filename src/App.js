@@ -51,6 +51,7 @@ function App() {
 			console.log('no token found');
 		}
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[]);
 
 	return (
