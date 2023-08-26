@@ -1,58 +1,59 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import NoUser from "../../components/NoUser";
 
 const PostOffer = () => {
-    const navigate = useNavigate();
-    const userData = window.localStorage.getItem('CURRENT_USER_DATA');
-    const user = JSON.parse(userData);
-    const [newOfferData, setNewOfferData] = useState({
+	const navigate = useNavigate();
+	const userData = window.localStorage.getItem("CURRENT_USER_DATA");
+	const isLoggedIn = window.localStorage.getItem("loggedIn");
+	const user = JSON.parse(userData);
+	const [newOfferData, setNewOfferData] = useState({
 		sellCurrency: "INR",
 		buyCurrency: "INR",
 		sellRate: "",
-        sellAmount: "",
-        sellerID: user._id,
-        sellerName: user.name,
+		sellAmount: "",
+		sellerID: user._id,
+		sellerName: user.name,
 	});
 
-    const [totalTranValue, setTotalTranValue] = useState();
+	const [totalTranValue, setTotalTranValue] = useState();
 
-    useEffect(()=>{
-        const total = newOfferData.sellRate * newOfferData.sellAmount;
-        setTotalTranValue(total);
-    },[newOfferData])
+	useEffect(() => {
+		const total = newOfferData.sellRate * newOfferData.sellAmount;
+		setTotalTranValue(total);
+	}, [newOfferData]);
 
-    // set offer data
-    let setInputData = (e) => {
+	// set offer data
+	let setInputData = (e) => {
 		setNewOfferData({
 			...newOfferData,
 			[e.target.name]: e.target.value,
 		});
-        
-	}
+	};
 
-    // <------------ create new offer into DB ------------>
+	// <------------ create new offer into DB ------------>
 
-    const handleOfferData = async() => { // On Submit
-        try {
-            
-            const res = await axios.post('/offer', {newOfferData});
-            navigate("/");
-            console.log(res);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+	const handleOfferData = async () => {
+		// On Submit
+		try {
+			const res = await axios.post("/offer", { newOfferData });
+			navigate("/");
+			console.log(res);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 	return (
 		<>
-			return (
-			<>
+			{isLoggedIn ? (
 				<div className="py-[5%] h-screen px-[5%] bg-blue2 dark:bg-dark">
 					<h1 className="text-blue dark:bg-dark  bg-blue2 text-center font-bold text-4xl md:text-4xl dark:text-white ">
 						Post new offer
 					</h1>
 					<h1 className="text-dark dark:bg-dark  bg-blue2 text-center font-medium	 text-md pt-[30px] md:text-xl dark:text-white text-decoration-line: underline">
-						Current Balance : INR: {user.balance.INR} , USD: {user.balance.USD}, EUR: {user.balance.EUR}
+						Current Balance : INR: {user.balance.INR} , USD: {user.balance.USD},
+						EUR: {user.balance.EUR}
 					</h1>
 
 					<div className="mx-[10%] mt-[20px] flex flex-col items-center gap-5 justify-center">
@@ -103,13 +104,13 @@ const PostOffer = () => {
 								value={newOfferData.sellRate}
 								className=" w-[100px] text-md font-medium p-3 rounded-md"
 							></input>
-                            <p className="text-darkBlue dark:bg-dark  bg-blue2 text-center font-medium text-md md:text-xl dark:text-white">
-							{newOfferData.buyCurrency}
+							<p className="text-darkBlue dark:bg-dark  bg-blue2 text-center font-medium text-md md:text-xl dark:text-white">
+								{newOfferData.buyCurrency}
 							</p>
 						</div>
 						<div className="flex  justify-left items-center gap-5 ">
 							<p className="text-darkBlue dark:bg-dark  bg-blue2 text-center font-medium text-md md:text-xl dark:text-white">
-								Enter the amount you want to sell : 
+								Enter the amount you want to sell :
 							</p>
 							<input
 								name="sellAmount"
@@ -117,16 +118,18 @@ const PostOffer = () => {
 								value={newOfferData.sellAmount}
 								className=" w-[100px] text-md font-medium p-3 rounded-md"
 							></input>
-                            <p className="text-darkBlue dark:bg-dark  bg-blue2 text-center font-medium text-md md:text-xl dark:text-white">
+							<p className="text-darkBlue dark:bg-dark  bg-blue2 text-center font-medium text-md md:text-xl dark:text-white">
 								{newOfferData.sellCurrency}
 							</p>
 						</div>
 						<div className="flex mt-5  justify-left items-center gap-5 ">
 							<p className="text-darkBlue dark:bg-dark  bg-blue2 text-center font-bold text-md md:text-3xl dark:text-white">
-								Do you want to sell {newOfferData.sellAmount}{newOfferData.sellCurrency}  for
+								Do you want to sell {newOfferData.sellAmount}
+								{newOfferData.sellCurrency} for
 							</p>
-                            <p className="text-darkBlue dark:bg-dark  bg-blue2 text-center font-bold text-md md:text-3xl dark:text-white">
-								{totalTranValue}{newOfferData.buyCurrency}?
+							<p className="text-darkBlue dark:bg-dark  bg-blue2 text-center font-bold text-md md:text-3xl dark:text-white">
+								{totalTranValue}
+								{newOfferData.buyCurrency}?
 							</p>
 						</div>
 
@@ -138,8 +141,9 @@ const PostOffer = () => {
 						</button>
 					</div>
 				</div>
-			</>
-			);
+			) : (
+				<NoUser />
+			)}
 		</>
 	);
 };

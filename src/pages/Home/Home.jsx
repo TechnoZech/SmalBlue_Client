@@ -1,10 +1,13 @@
-import {React, useEffect} from 'react'
+import {React} from 'react'
 import Hero from './Hero';
+import NoUser from "../../components/NoUser";
 
 const Home = (props) => {
+
+  const isLoggedIn = window.localStorage.getItem('loggedIn');
   return (
     <>
-        <Hero theme={props.theme}/>
+        {isLoggedIn ? <Hero theme={props.theme}/> : <NoUser/>}
     </>
   )
 }

@@ -1,10 +1,13 @@
 import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import NoUser from "../../components/NoUser";
 
 const EditProfile = () => {
     const navigate = useNavigate();
     const userData = window.localStorage.getItem('CURRENT_USER_DATA');
+	const isLoggedIn = window.localStorage.getItem('loggedIn');
+
     const user = JSON.parse(userData);
     const [newProfileData, setNewProfileData] = useState({
         userID: user._id,
@@ -38,7 +41,7 @@ const EditProfile = () => {
         }
     }
     return (
-		<>
+		<> {isLoggedIn ? 
 			<div className="py-[5%] px-[5%] bg-blue2 dark:bg-dark">
 				<h1 className="text-blue dark:bg-dark  bg-blue2 text-center font-bold text-4xl pt-[30px] md:text-4xl dark:text-white ">
 					Edit Profile
@@ -120,7 +123,7 @@ const EditProfile = () => {
 						Update Profile
 					</button>
 				</div>
-			</div>
+			</div> : <NoUser/>}
 		</>
 	);
 }

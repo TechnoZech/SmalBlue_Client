@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { fetchOffers } from "../../redux/slices/fetchOffersSlice";
@@ -13,6 +13,7 @@ const Hero = (props) => {
 	const user = JSON.parse(userData);
 	useEffect(() => {
 		dispatch(fetchOffers());
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const acceptOffer = async (item) => {

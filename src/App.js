@@ -13,6 +13,7 @@ import Profile from "./pages/Profile/Profile";
 import EditProfile from "./pages/Profile/EditProfile";
 import PostOffer from "./pages/User/PostOffer";
 import TransactionHistory from "./pages/User/TransactionHistory";
+import NoUser from "./components/NoUser";
 
 function App() {
 	//DarkMode
@@ -32,6 +33,8 @@ function App() {
 	//Fetching current user from server
 	const dispatch = useDispatch();
 	const token = window.localStorage.getItem('token');
+	
+
 	useEffect(() => {
 		if(token){
 			axios.post('/getuser', {token})
@@ -59,8 +62,9 @@ function App() {
 			<ScrollToTop />
 			<Navbar handleThemeSwitch={handleThemeSwitch} theme={theme} />
 			<Routes>
+			
 				<Route path="*" element={<Home theme={theme} />} theme={theme} />
-				<Route path="/" element={<Home theme={theme} />} />
+				<Route path="/" element={<Home theme={theme} /> } />
 				<Route path="/Profile" element={<Profile theme={theme} />} />
 				<Route path="/EditProfile" element={<EditProfile theme={theme} />} />
 				<Route path="/SignUp" element={<SignUp theme={theme} />} />

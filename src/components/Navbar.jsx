@@ -3,7 +3,10 @@ import "./NavbarStyle.css";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { HashLink } from "react-router-hash-link";
+
+
 const Navbar = (props) => {
+	const isLoggedIn = window.localStorage.getItem('loggedIn');
 	const userData = useSelector((state) => state.user);
 	const openNav = () => {
 		const hamburger = document.querySelector(".hamburger");
@@ -53,6 +56,7 @@ const Navbar = (props) => {
 							onClick={props.handleThemeSwitch}
 						></i>
 					)}
+					{isLoggedIn ?
 					<li
 						onClick={openNav}
 						className="font-medium text-lg  hover:text-blue cursor-pointer ease-in-out duration-300 "
@@ -60,19 +64,9 @@ const Navbar = (props) => {
 						<HashLink smooth to="/PostOffer">
 							PostOffer
 						</HashLink>
-					</li>
-					{userData.user.isAdmin ? (
-						<li
-							onClick={openNav}
-							className="font-medium text-md  hover:text-blue cursor-pointer ease-in-out duration-300 "
-						>
-							<NavLink to="/admin">Admin</NavLink>
-						</li>
-					) : (
-						""
-					)}
+					</li> : null }
 
-					{userData.user.length !== 0 ? (
+					{isLoggedIn ? (
 						<NavLink onClick={openNav} to="/profile" className="flex items-center justify-center">
 							<h1 className="font-medium text-md text-blueGrey dark:text-blue2  hover:text-blue cursor-pointer ease-in-out duration-300 mr-3">
 								Hey,{" "}
