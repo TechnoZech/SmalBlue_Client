@@ -3,10 +3,10 @@ import "./NavbarStyle.css";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { HashLink } from "react-router-hash-link";
-
+import logo from "../assets/smalBlue.webp";
 
 const Navbar = (props) => {
-	const isLoggedIn = window.localStorage.getItem('loggedIn');
+	const isLoggedIn = window.localStorage.getItem("loggedIn");
 	const userData = useSelector((state) => state.user);
 	const openNav = () => {
 		const hamburger = document.querySelector(".hamburger");
@@ -36,7 +36,7 @@ const Navbar = (props) => {
 			<nav className="bg-white text-black drop-shadow dark:bg-darkBlack dark:text-blue2">
 				<div className="logo text-2xl">
 					<NavLink to="/" onClick={scrollUp} className="font-bold text-blue">
-						SmalBlu
+						<img className="w-[130px] h-7 mr-2" src={logo} alt="logo"></img>
 					</NavLink>
 				</div>
 				<div className="hamburger " onClick={openNav}>
@@ -56,18 +56,23 @@ const Navbar = (props) => {
 							onClick={props.handleThemeSwitch}
 						></i>
 					)}
-					{isLoggedIn ?
-					<li
-						onClick={openNav}
-						className="font-medium text-lg  hover:text-blue cursor-pointer ease-in-out duration-300 "
-					>
-						<HashLink smooth to="/PostOffer">
-							PostOffer
-						</HashLink>
-					</li> : null }
+					{isLoggedIn ? (
+						<li
+							onClick={openNav}
+							className="font-medium text-lg  hover:text-blue cursor-pointer ease-in-out duration-300 "
+						>
+							<HashLink smooth to="/PostOffer">
+								PostOffer
+							</HashLink>
+						</li>
+					) : null}
 
 					{isLoggedIn ? (
-						<NavLink onClick={openNav} to="/profile" className="flex items-center justify-center">
+						<NavLink
+							onClick={openNav}
+							to="/profile"
+							className="flex items-center justify-center"
+						>
 							<h1 className="font-medium text-md text-blueGrey dark:text-blue2  hover:text-blue cursor-pointer ease-in-out duration-300 mr-3">
 								Hey,{" "}
 								<span className="font-medium text-md text-black dark:text-white  hover:text-blue cursor-pointer ease-in-out duration-300 ">
@@ -78,20 +83,20 @@ const Navbar = (props) => {
 						</NavLink>
 					) : (
 						<>
-						<NavLink
-							onClick={openNav}
-							className=" py-1.5 px-7 login-button text-white bg-blue hover:scale-105 ease-in-out duration-300 font-medium rounded"
-							to="/login"
-						>
-							Login
-						</NavLink>
-						<NavLink
-							onClick={openNav}
-							className=" py-1.5 px-7 login-button text-white bg-blue hover:scale-105 ease-in-out duration-300 font-medium rounded"
-							to="/signup"
-						>
-							SignUp
-						</NavLink>
+							<NavLink
+								onClick={openNav}
+								className=" py-1.5 px-7 login-button text-white bg-blue hover:scale-105 ease-in-out duration-300 font-medium rounded"
+								to="/login"
+							>
+								Login
+							</NavLink>
+							<NavLink
+								onClick={openNav}
+								className=" py-1.5 px-7 login-button text-white bg-blue hover:scale-105 ease-in-out duration-300 font-medium rounded"
+								to="/signup"
+							>
+								SignUp
+							</NavLink>
 						</>
 					)}
 				</ul>
